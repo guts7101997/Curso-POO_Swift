@@ -79,6 +79,18 @@ class Aluno: Pessoa{
         super.init(nome: nome, cpf: cpf, email: email)
     }
 
+    override public func descricao(){
+        print("""
+        Nome: \(self.nome)
+        CPF: \(self.cpf)
+        E-Mail: \(self.email)
+        Matricula: \(self.matricula)
+        Nível: \(self.nivel)
+        Aula matriculado: \(self.tipoAula)
+        Plano: \(self.plano)
+        """)
+    }
+
     public func mudaPlano(novoPlano: Plano){
         self.plano = novoPlano
     }
@@ -104,5 +116,14 @@ class Instrutor: Pessoa{
     init(nome: String, cpf: Int, email: String, especialidade: CategoriaAula) {
     self.especialidade = especialidade
     super.init(nome: nome, cpf: cpf, email: email)
+    }
+
+    override public func descricao() {
+    print("""
+        Nome: \(self.nome)
+        CPF: \(self.cpf)
+        E-Mail: \(self.email)
+        Especialidade: \(self.especialidade)
+        """)
     }
 }
