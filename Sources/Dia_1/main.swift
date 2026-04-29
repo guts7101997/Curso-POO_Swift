@@ -42,7 +42,7 @@ class CatalogoP {
 
     static let trimestral = Plano(nome: "Plano Trimestral", valor: 680, personal: true, limite: 85, duracao: 3)
 
-    static let semestral = Plano(nome: "Plano Anual", valor: 1300, personal: true, limite: 350, duracao: 12)
+    static let anual = Plano(nome: "Plano Anual", valor: 1300, personal: true, limite: 350, duracao: 12)
 }
 
 class Pessoa{

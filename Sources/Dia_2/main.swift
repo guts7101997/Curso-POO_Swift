@@ -19,8 +19,8 @@ class Aparelho: Manutencao{
         id = Int.random(in:100...600)
     }
 
-    func realizarReparo(data: String) -> Bool {
-        guard estaFuncionando else{
+    func realizarReparo(data: String, estaemDia: Bool) -> Bool {
+        guard estaemDia else{
             print("Maquina quebrada. Reparo não é possível.")
             return false
         }
@@ -32,15 +32,6 @@ class Aparelho: Manutencao{
 
     func reportarErro(){
         estaFuncionando = false
-    }
-
-    func reparouMaquina(data: String){
-        if realizarReparo(data: data) == true{
-            estaFuncionando = true
-        } else {
-            print("Não foi possível reparar a maquina.")
-        }
-
     }
 }
 protocol Aula {
