@@ -18,6 +18,10 @@ class Aparelho: Manutencao{
         id = Int.random(in:100...600)
     }
 
+    public func getID() -> Int{
+        return self.id
+    }
+
     func realizarReparo(data: String, estaemDia: Bool) -> Bool {
         guard estaemDia else{
             print("Maquina quebrada. Reparo não é possível.")
@@ -44,7 +48,7 @@ protocol Aula {
     var descricao: String
 }
 
-class turmasColetiva: Aula{
+class TurmasColetiva: Aula{
     var nome: String
     var instrutor: Instrutor
     var categoria: CategoriaAula
@@ -67,12 +71,14 @@ class turmasColetiva: Aula{
         self.numInscritos = 0
     }
 
-    public func inscrever(aluno: Aluno){
+    public func inscrever(aluno: Aluno) -> Bool {
         if controlaInscricao(aluno: aluno) == false{
             print("Não é possível se inscrever nessa aula. Busque outro horario.")
-        } else {
+            return false
+            } else {
             print("Inscrição confirmada. Boa aula!")
             alunosInscritos.append(aluno)
+            return true 
         }
     }
 
@@ -96,11 +102,12 @@ class turmasColetiva: Aula{
     }
 }
 
-class treinoPersonal{
+class TreinoPersonal{
     var nome: String
     var instrutor: Instrutor
     var categoria: CategoriaAula
     var descricao: String
+    var treino_alunos: [String: Aluno] = [:]
 
     init(nome: String, instrutor: Instrutor, categoria: CategoriaAula, descricao: String){
         self.nome = nome
@@ -108,14 +115,15 @@ class treinoPersonal{
         self.categoria = categoria
         self.descricao = descricao
     }
-//talvez jogar isso no dia 3
-    public func agendarHorario(horario: String) -> Bool{
+
+    public func agendarHorario(horario: String, aluno: Aluno) -> Bool{
         if instrutor.getHorarios().contains(horario){
             print("Não é possível fazer aula nesse horário, busque outro horário ou outro personal")
             return false
         }
         print("Aula agendada com o personal \(self.instrutor.nome)")
         self.instrutor.addHorarios(horario)
+        self.treino_alunos[horario] = [aluno]
         return true
 
     }
