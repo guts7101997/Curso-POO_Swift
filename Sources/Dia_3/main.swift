@@ -98,7 +98,8 @@ class Gerenciamento{
 
         print("Não foi possível se inscrever nesse horário.")
     }
-
+    
+    //uma ideia boa é fazer meio que variops horarios pra varias aulas, eu tenho uma lista de aulas coletivas e cabe aqui uma lista de horarios em cada aula, e cada horario teria sua lsita de alunos
     func agendarTurmaColetiva(matriculaAluno: Int, nomeAula: String){
         guard let aluno = alunos[matriculaAluno] else {
             print("Erro: Aluno com matrícula \(matriculaAluno) não encontrado.")
