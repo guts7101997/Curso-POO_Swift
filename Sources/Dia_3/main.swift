@@ -1,5 +1,5 @@
 import Foundation
-
+//mudei algumas coisas nos dias 1 e 2 pra fazer sentido com o dia 3, vou falar mais sobre na apresentação (vi q vcs responderam no comentário obgd kkkk eu vou jogando esse comentarios como pensamentos em "voz alta")
 class Gerenciamento{
     private var alunos: [Int: Aluno] = [:]
     private var instrutores: [Int: Instrutor] = [:]
