@@ -4,8 +4,7 @@ protocol Manutencao {
     var nomeItem: String {get}
     var historico: String {get}
 
-    func realizarReparo(data: String) -> Bool
-    func estaEmDia() -> Bool
+    func realizarReparo(data: String, estaEmDia: Bool) -> Bool
 }
 
 class Aparelho: Manutencao{
@@ -24,14 +23,18 @@ class Aparelho: Manutencao{
             print("Maquina quebrada. Reparo não é possível.")
             return false
         }
-        
-        historico.append(data)
+        let status: String = "Consertado"
+
+        historico.append("\(data) - \(status)")
         print("Maquina concertada!")
         return true
     }
 
-    func reportarErro(){
+    func reportarErro(data: String){
         estaFuncionando = false
+        print("Erro reportado")
+        let status: String = "Quebrado"
+        historico.append("\(data) - \(status)")
     }
 }
 protocol Aula {
@@ -48,17 +51,19 @@ class turmasColetiva: Aula{
     var descricao: String
     var numInscritos: Int 
     var capacidadeMaxima: Int
+    var capacidadeMinima: Int
     private var alunosInscritos: [Aluno] = []
     var numInscritos: Int {
         return alunosInscritos.count
     }
 
-    init(nome: String, instrutor: Instrutor, categoria: CategoriaAula, descricao: String, capacidadeMaxima: Int){
+    init(nome: String, instrutor: Instrutor, categoria: CategoriaAula, descricao: String, capacidadeMaxima: Int, capacidadeMinima: Int){
         self.nome = nome
         self.instrutor = instrutor
         self.categoria = categoria
         self.descricao = descricao
         self.capacidadeMaxima = capacidadeMaxima
+        self.capacidadeMinima = capacidadeMinima
         self.numInscritos = 0
     }
 
@@ -82,6 +87,13 @@ class turmasColetiva: Aula{
         
         return true
     }
+
+    public func podeAula() -> Bool{
+        if self.numInscritos < capacidadeMinima{
+            return false
+        }
+        return true
+    }
 }
 
 class treinoPersonal{
@@ -95,5 +107,16 @@ class treinoPersonal{
         self.instrutor = instrutor
         self.categoria = categoria
         self.descricao = descricao
+    }
+//talvez jogar isso no dia 3
+    public func agendarHorario(horario: String) -> Bool{
+        if instrutor.getHorarios().contains(horario){
+            print("Não é possível fazer aula nesse horário, busque outro horário ou outro personal")
+            return false
+        }
+        print("Aula agendada com o personal \(self.instrutor.nome)")
+        self.instrutor.addHorarios(horario)
+        return true
+
     }
 }
