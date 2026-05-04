@@ -1,4 +1,4 @@
-#Diagrama das classes
+# Diagrama das classes
 
 <img width="281" height="633" alt="Captura de tela 2026-05-04 171807" src="https://github.com/user-attachments/assets/233a0aa3-49fb-4f0c-adcd-5385b078b01e" />
 <img width="605" height="628" alt="Captura de tela 2026-05-04 171825" src="https://github.com/user-attachments/assets/a347dfe8-340a-40c4-aacb-6fecf9825cbe" />
