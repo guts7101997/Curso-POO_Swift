@@ -6,7 +6,7 @@ extension Gerenciamento {
         print("==================================")
         print("Total de Alunos: \(self.alunos.count)")
         print("Total de Instrutores: \(self.instrutores.count)")
-        print("Aulas Coletivas Ativas: \(self.turmas.count)")
+        print("Aulas Coletivas Ativas: \(self.aulas_coletivas.count)")
         
         let totalDanificados = self.aparelhos.filter { $0.estaQuebrado }.count
         print("Equipamentos Danificados: \(totalDanificados)")
